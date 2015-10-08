@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Miroir</title>
+
+    <script src="/socket.io/socket.io.js" charset="utf-8"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+    <style>
+        body {
+            width: 100vw;
+            height: 100vh;
+        }
+
+        img {
+            width: 20px;
+            height: auto;
+            position: absolute;
+            top: 0;
+            left:0;
+        }
+    </style>
+</head>
+<body>
+
+    <img src="souris.png" alt="" id="miror">
+
+    <script type="text/javascript">
+        var socket = io();
+
+        socket.on('miror', function (posX, posY) {
+            $('#miror').css({
+                'left' : posX,
+                'top' : posY
+            });
+        });
+    </script>
+
+</body>
+</html>

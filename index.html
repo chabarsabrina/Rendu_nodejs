@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Curseur</title>
+
+    <script src="/socket.io/socket.io.js" charset="utf-8"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+    <style>
+        body {
+            width: 100vw;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+
+    <script type="text/javascript">
+        var socket = io();
+
+        $(function () {
+            $(document).mousemove(function(position) {
+                var posX = position.pageX;
+                var posY = position.pageY;
+
+                socket.emit('position', posX, posY);
+            });
+        })
+    </script>
+
+</body>
+</html>
